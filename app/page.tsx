@@ -22,27 +22,21 @@ import {
 const profileImage = "/profile.jpg"
 
 const socialLinks = [
-  { label: "GitHub", href: "https://github.com/SejalKhedekar2000", short: "GH" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/sejalkhedekar/", short: "in" },
-  { label: "Email", href: "mailto:khedekar.sejal02@gmail.com", short: "@" },
-]
-
-const stats = [
-  { value: "10K+", label: "Users Supported", icon: <Globe className="h-4 w-4" />, color: "#22d3ee" },
-  { value: "85%", label: "Failure Reduction", icon: <Zap className="h-4 w-4" />, color: "#818cf8" },
-  { value: "60%", label: "UI Performance Boost", icon: <Star className="h-4 w-4" />, color: "#34d399" }
+  { label: "GitHub", href: "https://github.com/SejalKhedekar2000", short: "Github" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/sejalkhedekar/", short: "LinkedIn" },
+  { label: "Email", href: "mailto:khedekar.sejal02@gmail.com", short: "Email" },
 ]
 
 const aboutCards = [
   {
     title: "Industry Experience",
-    text: "Built and modernized enterprise healthcare platforms with strong focus on API integration, frontend migration, reliability, and delivery quality.",
+    text: "Built enterprise healthcare platforms at TCS with a focus on API integration, React migration, and production reliability.",
     icon: <Briefcase className="h-5 w-5" />,
     color: "#22d3ee",
   },
   {
     title: "Academic Depth",
-    text: "MS in Software Engineering at Arizona State University with applied work across cloud automation, systems thinking, and full stack development.",
+    text: "MS in Software Engineering at Arizona State University with applied work across full stack development.",
     icon: <GraduationCap className="h-5 w-5" />,
     color: "#818cf8",
   },
@@ -117,8 +111,16 @@ const timeline = [
 ]
 
 const certifications = [
-  "Google Cloud Associate Cloud Engineer",
-  "Google Cloud Professional Cloud Architect",
+  {
+    title: "Google Cloud Associate Cloud Engineer",
+    issuer: "Google Cloud",
+    color: "#22d3ee",
+  },
+  {
+    title: "Google Cloud Professional Cloud Architect",
+    issuer: "Google Cloud",
+    color: "#818cf8",
+  },
 ]
 
 function useMagneticCursor() {
@@ -223,22 +225,7 @@ function SectionLabel({ text }: { text: string }) {
   )
 }
 
-function StatCard({ item, index }: { item: (typeof stats)[number]; index: number }) {
-  return (
-    <motion.div
-      {...scaleIn(index * 0.06)}
-      whileHover={{ y: -6, scale: 1.02 }}
-      className="rounded-2xl border border-white/[0.07] bg-white/[0.03] p-4"
-    >
-      <div className="flex items-center gap-2 text-sm" style={{ color: item.color }}>
-        {item.icon}
-        <span className="font-medium">Impact</span>
-      </div>
-      <div className="mt-3 text-3xl font-bold tracking-tight text-white">{item.value}</div>
-      <div className="mt-2 text-sm leading-6 text-slate-400">{item.label}</div>
-    </motion.div>
-  )
-}
+
 
 export default function Page() {
   const { springX, springY } = useMagneticCursor()
@@ -246,7 +233,7 @@ export default function Page() {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] })
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 120])
   const typeText = useTypewriter(
-    ["Full Stack Engineer", "Software Developer", "Software Problem Solver"],
+    ["Full Stack Engineer", "Software Problem Solver"],
     70
   )
 
@@ -293,7 +280,7 @@ export default function Page() {
             animate={{ opacity: 1, y: 0 }}
             className="text-xl font-semibold tracking-tight text-white"
           >
-            Sejal.
+           
           </motion.a>
 
           <nav className="hidden items-center gap-7 md:flex">
@@ -381,7 +368,7 @@ export default function Page() {
               transition={{ duration: 0.72, delay: 0.6 }}
               className="mt-6 max-w-2xl text-base leading-8 text-slate-400 md:text-lg"
             >
-              Full stack engineer with experience across enterprise healthcare software, cloud based automation, frontend modernization, backend services, and API driven development. I build products that are fast, reliable, and designed for real users.
+             I take challenge problems and make them disappear. Whether it's a slow backend, a brittle API, a frontend that hurts to use, or an AI feature that needs to actually work in production. I build systems that hold up under pressure and feel effortless to the people using them.
             </motion.p>
 
             <motion.div
@@ -399,7 +386,7 @@ export default function Page() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.35, delay: 0.8 + index * 0.06 }}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-cyan-400/25 bg-[#0b101a] text-sm font-semibold text-cyan-300 transition hover:bg-cyan-400 hover:text-[#06080f]"
+                  className="flex h-15 w-20 items-center justify-center rounded-full border border-cyan-400/25 bg-[#0b101a] text-sm font-semibold text-cyan-300 transition hover:bg-cyan-400 hover:text-[#06080f]"
                   aria-label={item.label}
                 >
                   {item.short}
@@ -441,9 +428,7 @@ export default function Page() {
               transition={{ duration: 0.72, delay: 1.02 }}
               className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4"
             >
-              {stats.map((item, index) => (
-                <StatCard key={item.label} item={item} index={index} />
-              ))}
+              
             </motion.div>
           </div>
 
@@ -460,8 +445,8 @@ export default function Page() {
             >
               <div className="absolute inset-0 rounded-[2.2rem] bg-cyan-400/20 blur-3xl" />
               <div className="relative overflow-hidden rounded-[2.2rem] border border-white/[0.08] bg-[#0c111c] p-4 shadow-[0_0_60px_rgba(34,211,238,0.12)]">
-                <div className="relative h-[420px] w-[310px] overflow-hidden rounded-[1.6rem] md:h-[520px] md:w-[380px]">
-                  <img src={profileImage} alt="Sejal Khedekar" className="h-full w-full object-cover" />
+                <div className="relative h-[450px] w-[310px] overflow-hidden rounded-[1.6rem] md:h-[450px] md:w-[380px]">
+                  <img src={profileImage} alt="Sejal Khedekar" className="h-full w-full object-cover" height="1000px"/>
                   <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(6,8,15,0.75),transparent_42%)]" />
                 </div>
 
@@ -471,7 +456,7 @@ export default function Page() {
                   transition={{ duration: 0.55, delay: 0.65 }}
                   className="absolute bottom-8 left-8 right-8 rounded-2xl border border-white/[0.08] bg-[#06080f]/70 p-4 backdrop-blur-xl"
                 >
-                  <p className="text-xs font-medium uppercase tracking-[0.24em] text-cyan-300">Tempe, Arizona</p>
+                  <p className="text-xs font-medium uppercase tracking-[0.24em] text-cyan-300">Based in USA · Open to relocation</p>
                   <p className="mt-2 text-lg font-semibold text-white">Engineer. Builder. Problem Solver.</p>
                   <p className="mt-2 text-sm leading-6 text-slate-400">Focused on strong systems, clean execution, and practical impact.</p>
                 </motion.div>
@@ -486,10 +471,10 @@ export default function Page() {
           <SectionLabel text="About" />
         </div>
         <motion.h2 {...fadeUp(0.05)} className="mx-auto max-w-4xl text-center font-serif text-4xl font-bold text-white md:text-5xl">
-          A builder who cares about product quality and engineering depth
+          A builder who ships product quality and engineering depth
         </motion.h2>
         <motion.p {...fadeUp(0.1)} className="mx-auto mt-5 max-w-2xl text-center text-slate-400">
-          My work spans enterprise software, academic automation, cloud systems, frontend modernization, and AI assisted workflows.
+         I work across enterprise software, cloud systems, frontend modernization, and AI-powered workflows.
         </motion.p>
 
         <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -510,24 +495,42 @@ export default function Page() {
           ))}
         </div>
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
-          <motion.div {...fadeUp(0.14)} className="rounded-2xl border border-white/[0.07] bg-[#0d1219] p-7">
-            <h3 className="text-xl font-bold text-white">What I do best</h3>
-            <p className="mt-4 text-sm leading-[1.9] text-slate-400">
-              I build full stack applications, modernize legacy interfaces, design API driven services, and create cloud workflows that improve delivery speed and product stability. I work best where engineering quality and user impact both matter.
-            </p>
-          </motion.div>
+        <div className="mt-10">
+          <motion.div
+  {...fadeUp(0.2)}
+  className="rounded-2xl border border-white/[0.07] bg-[#0d1219] p-7"
+>
+  <div className="flex items-center justify-between gap-3">
+    <h3 className="text-xl font-bold text-white">Certificates</h3>
+  </div>
 
-          <motion.div {...fadeUp(0.2)} className="rounded-2xl border border-white/[0.07] bg-[#0d1219] p-7">
-            <h3 className="text-xl font-bold text-white">Certifications</h3>
-            <div className="mt-4 space-y-3">
-              {certifications.map((item, index) => (
-                <motion.div key={item} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.06 }} className="rounded-xl border border-cyan-400/12 bg-cyan-400/6 px-4 py-3 text-sm text-cyan-100">
-                  {item}
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+  <div className="mt-4 flex gap-3">
+  {certifications.map((item, index) => (
+    <motion.a
+      key={item.title}
+      href={item.href}
+      target="_blank"
+      rel="noreferrer"
+      initial={{ opacity: 0, x: -10 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.35, delay: index * 0.06 }}
+      whileHover={{ x: 6, scale: 1.01 }}
+      className="flex flex-1 items-center justify-between gap-4 rounded-xl border px-4 py-4 text-sm transition"
+      style={{
+        borderColor: `${item.color}22`,
+        background: `${item.color}10`,
+        color: item.color,
+      }}
+    >
+      <div>
+        <div className="font-semibold">{item.title}</div>
+        <div className="mt-1 text-xs text-slate-400">{item.issuer}</div>
+      </div>
+    </motion.a>
+  ))}
+</div>
+</motion.div>
         </div>
       </section>
 
