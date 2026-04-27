@@ -507,21 +507,19 @@ export default function Page() {
   <div className="mt-4 flex gap-3">
   {certifications.map((item, index) => (
     <motion.div
-      key={item.title}
-      target="_blank"
-      rel="noreferrer"
-      initial={{ opacity: 0, x: -10 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.35, delay: index * 0.06 }}
-      whileHover={{ x: 6, scale: 1.01 }}
-      className="flex flex-1 items-center justify-between gap-4 rounded-xl border px-4 py-4 text-sm transition"
-      style={{
-        borderColor: `${item.color}22`,
-        background: `${item.color}10`,
-        color: item.color,
-      }}
-    >
+  key={item.title}
+  initial={{ opacity: 0, x: -10 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.35, delay: index * 0.06 }}
+  whileHover={{ x: 6, scale: 1.01 }}
+  className="flex flex-1 items-center justify-between gap-4 rounded-xl border px-4 py-4 text-sm transition"
+  style={{
+    borderColor: `${item.color}22`,
+    background: `${item.color}10`,
+    color: item.color,
+  }}
+>
       <div>
         <div className="font-semibold">{item.title}</div>
         <div className="mt-1 text-xs text-slate-400">{item.issuer}</div>
