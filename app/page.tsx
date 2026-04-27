@@ -506,9 +506,8 @@ export default function Page() {
 
   <div className="mt-4 flex gap-3">
   {certifications.map((item, index) => (
-    <motion.a
+    <motion.div
       key={item.title}
-      href={item.href}
       target="_blank"
       rel="noreferrer"
       initial={{ opacity: 0, x: -10 }}
