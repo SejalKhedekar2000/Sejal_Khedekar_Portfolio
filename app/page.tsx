@@ -526,7 +526,7 @@ export default function Page() {
         <div className="font-semibold">{item.title}</div>
         <div className="mt-1 text-xs text-slate-400">{item.issuer}</div>
       </div>
-    </motion.a>
+    </motion.div>
   ))}
 </div>
 </motion.div>
